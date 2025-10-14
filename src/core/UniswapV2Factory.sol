@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.0;
 
+import "./UniswapV2Pair.sol"; // still pending
+import "./interfaces/IUniswapV2Pair.sol"; // still pending
+
 contract UniswapV2Factory {
     // State variables
 
@@ -19,14 +22,39 @@ contract UniswapV2Factory {
 
     function createPair(address tokenA, address tokenB) external returns (address pair) {
         // TODO:
-        // 1. Validate tokens are different
+        // 1. Validate tokens
+        require(tokenA != tokenB, "Addresses are Identical!");
+        require(tokenA != address(0) && tokenB != address(0), "Address Zero!");
+
         // 2. Sort tokens (smaller address first)
-        // 3. Check pair doesn't already exist
+        (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
+
+        // 3. Check if pair doesn't already exist
+        require(getPair[token0][token1] == address(0), "Pair already exists");
+
         // 4. Deploy new pair contract
-        // 5. Store pair in mapping
-        // 6. Add to allPairs array
-        // 7. Emit PairCreated event
-        // 8. Return pair address
+        // TODO: Check UniswapV2Pair Smart Contract
+        bytes memory bytecode = type(UniswapV2Pair).creationCode;
+        bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+        assembly {
+            pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
+        }
+
+        // 5. Initialize the pair (calling its init function)
+        IUniswapV2Pair(pair).initialize(token0, token1);
+
+        // 6. Store pair in mapping
+        getPair[token0][token1] = pair;
+        getPair[token1][token0] = pair; // The lookup will work for both direction of the pool
+        
+        // 7. Add to allPairs array
+        allPairs.push(pair);
+        
+        // 8. Emit PairCreated event
+        emit PairCreated(token0, token1, pair, allPairs.length);
+
+        // 9. Return pair address
+        return pair;
     }
 
     function setFeeTo(address _feeTo) external {
