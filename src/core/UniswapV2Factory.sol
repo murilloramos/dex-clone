@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.0;
 
-import "./UniswapV2Pair.sol"; // still pending
-import "./interfaces/IUniswapV2Pair.sol"; // still pending
+import "./UniswapV2Pair.sol";
+import "../interfaces/IUniswapV2Pair.sol";
 
 contract UniswapV2Factory {
     // State variables
