@@ -1,6 +1,6 @@
 # DEX Clone - Project Overview:
 ## Protocol Name: SwappingDream
-A simple attempt to try to replicate [Uniswap](https://www.notion.so/Uniswap-2410ddda135480b2a018ffc7a94a5f85?source=copy_link) and it’s core functions, mainly focused on learning the whole protocol, focusing on core Blockchain and DeFi concepts such as:
+A simple attempt to try to replicate [Uniswap](https://docs.uniswap.org/) and it’s core functions, mainly focused on learning the whole protocol, focusing on core Blockchain and DeFi concepts such as:
 
 - 🧩 [*AMMs*](https://www.notion.so/AMMs-2860ddda1354802c9519c52f2fb3ec8f?source=copy_link)
 - 💧 *Liquidity Pools*
@@ -16,6 +16,6 @@ A simple attempt to try to replicate [Uniswap](https://www.notion.so/Uniswap-241
 -------------------
 Beyond web3 concepts, this project also aims to deepen the understanding of **Smart Contract Development**, getting the most out of the EVM and the [Solidity](https://www.soliditylang.org/) programming languages.
     
-[Uniswap](https://www.notion.so/Uniswap-2410ddda135480b2a018ffc7a94a5f85?source=copy_link)  will serve as the backbone for learning and integration, but this project will also be used to explore design choices and to further develop my React skills.
+[Uniswap](https://docs.uniswap.org/)  will serve as the backbone for learning and integration, but this project will also be used to explore design choices and to further develop my React skills.
 
 > ⚠️ Disclaimer: This project is for educational purposes only. It is not affiliated with or endorsed by Uniswap Labs.
